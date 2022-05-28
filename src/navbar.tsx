@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import LoginPOP from './LoginPOP';
+import { URL } from './URL';
 interface NavProps {
   color: string;
   logo: boolean;
@@ -17,7 +18,7 @@ const Navbar = (props: NavProps) => {
     email: '',
   });
   const getLoginData = () => {
-    fetch('http://localhost/Technology/get_login_data.php')
+    fetch(URL+'/get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -75,7 +76,7 @@ const Navbar = (props: NavProps) => {
     }, 2000);
   };
   const logOut = ()=>{
-    fetch("http://localhost/Technology/logout.php").then(() =>getLoginData());
+    fetch(URL+"/logout.php").then(() =>getLoginData());
   }
   return (
     <>
@@ -98,7 +99,6 @@ const Navbar = (props: NavProps) => {
             style={{ color: props.color, fontSize: '20px', marginTop: '5vh' }}
           >
             {state.email && (
-              // <a href="http://localhost/Technology/logout.php">
                 <Button
                   color="primary"
                   variant="contained"
@@ -107,7 +107,6 @@ const Navbar = (props: NavProps) => {
                 >
                   {state.email && 'Sing Out'}
                 </Button>
-              // </a>
             )}
             <MenuIcon sx={{ fontSize: '45px' }} onClick={open} />
           </div>

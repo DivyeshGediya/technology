@@ -7,13 +7,14 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import Error from './Error';
+import { URL } from './URL';
 
-// const signinUrl = 'http://localhost/Technology/get_login_data.php';
-// const signupUrl = 'http://localhost/Technology/get_signup_data.php';
+// const signinUrl = URL+'/get_login_data.php';
+// const signupUrl = URL+'/get_signup_data.php';
 const Login = () => {
   const navigation = useNavigate();
-  const signinFormUrl = 'http://localhost/Technology/login.php';
-  const signupFormUrl = 'http://localhost/Technology/sign_up_data.php';
+  const signinFormUrl = URL+'/login.php';
+  const signupFormUrl = URL+'/sign_up_data.php';
   const [state, setState] = useState<{
     in_up: boolean;
     error: boolean;
@@ -47,7 +48,7 @@ const Login = () => {
     }, 2000);
   }, []);
   const getLoginData = () => {
-    fetch('http://localhost/Technology/get_signup_data.php')
+    fetch(URL+'/get_signup_data.php')
       .then((res) => res.json())
       .then((data) => setState({ ...state, singup_data: data }));
   };

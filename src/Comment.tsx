@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TextValidator } from 'react-material-ui-form-validator';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { useNavigate } from 'react-router-dom';
+import { URL } from './URL';
 
 const Comment = () => {
   const ref=useRef<HTMLInputElement | null>(null);
@@ -13,7 +14,7 @@ const Comment = () => {
   });
   const [comments, setComments] = useState<{name:string,commentText:string}[]>([]);
   const getLoginData = () => {
-    fetch('http://localhost/Technology/get_login_data.php')
+    fetch(URL+'/get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -27,7 +28,7 @@ const Comment = () => {
   }, []);
 
   const getComment = () =>{
-    fetch('http://localhost/Technology/get_comment.php')
+    fetch(URL+'/get_comment.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -42,7 +43,7 @@ const Comment = () => {
       return;
     }
     let formBody = `name=${state.name}&comment=${state.commentText}`;
-        fetch('http://localhost/Technology/comment.php', {
+        fetch(URL+'/comment.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

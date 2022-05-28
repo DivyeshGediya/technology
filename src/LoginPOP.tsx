@@ -9,6 +9,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import ClearIcon from '@mui/icons-material/Clear';
 import Error from './Error';
 import { Link } from 'react-router-dom';
+import { URL } from './URL';
 type Props = {
   reload:()=>void;
 }
@@ -22,12 +23,12 @@ const LoginPOP = (props:Props) => {
     password: '',
   });
   const getLoginData = () => {
-    fetch('http://localhost/Technology/get_signup_data.php')
+    fetch(URL+'/get_signup_data.php')
       .then((res) => res.json())
       .then((data) => {
         setState({ ...state, data: data });
       });
-    fetch('http://localhost/Technology/get_login_data.php')
+    fetch(URL+'/get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (!data[0]) {
@@ -65,7 +66,7 @@ const LoginPOP = (props:Props) => {
   };
   const submitData = () => {
     var formBody = `email=${form.email}&password=${form.password}`;
-    fetch("http://localhost/Technology/login.php", {
+    fetch(URL+"/login.php", {
       method: "POST",
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -93,10 +94,6 @@ const LoginPOP = (props:Props) => {
             <div className="pop">
               <h2>Sign In</h2>
               <ValidatorForm className="form" onSubmit={submitData}>
-                {/* <form
-                  action="http://localhost/Technology/login.php"
-                  method="post"
-                > */}
                 <TextValidator
                   value={form.email}
                   InputProps={{ type: 'email' }}
@@ -134,7 +131,6 @@ const LoginPOP = (props:Props) => {
                 >
                   Sign in
                 </Button>
-                {/* </form> */}
               </ValidatorForm>
               <small>
                 I have no account? <Link to="/login">Create Account</Link>
