@@ -1,0 +1,68 @@
+.pop_back{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    pointer-events: all;
+    z-index: 10;
+}
+.pop_back_error{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    pointer-events: all;
+    z-index: 150;
+}
+.pop_font{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+}
+.pop_font_error{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 150;
+    pointer-events: none;
+}
+.pop{
+    position: relative;
+    pointer-events: all;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+.icon{
+    width: 100%;
+    text-align: center;
+}
+.clear{
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    cursor: pointer;
+}

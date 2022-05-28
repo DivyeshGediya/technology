@@ -1,0 +1,116 @@
+
+body{
+    /* background: radial-gradient(#011f44,#000c1c); */
+    background: black;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* scroll */
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  /* ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  } */
+  
+  
+  
+  
+  
+  .login{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/public/gallery/Digital_technology.jpg');
+    background-size: cover;
+  }
+  .login-page{
+    color: white;
+    position: absolute;
+    top: 0%;
+    right: 5%;
+    height: 100vh;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .login-page h1{
+    text-align: center;
+  }
+  .input{
+    color: white;
+  }
+  
+  .sign_change{
+    color:rgb(0, 30, 255) ;
+    cursor: pointer;
+  }
+  
+  .color{
+    color: white !important;
+  } 
+  @media (max-width: 1024px){
+    .login-page{
+      width: 100%;
+      padding: 5%;
+    }
+    .logo{
+      display: none;
+    }
+  }
+  
+  
+  
+  @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+  .logo{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    text-decoration: none;
+  }
+  .logo h1{
+    font-size: 100px;
+    color: white;
+      font-family: 'Koulen', cursive;
+  }
+  .loader{
+    width: 100%;
+    z-index: 1000;
+  }
+  .footer{
+    color: white;
+    background: url("/public/gallery/footer.png");
+    background-size: 100%;
+    padding: 3% 5%;
+    display: flex;
+    justify-content: center;
+  }
+  .subscribe{
+    text-align: center;
+  }
+  .subscribe_form{
+    display: flex;
+    justify-content: center;
+  }
+  #back_top{
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    background: rgb(0, 85, 255);
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+    z-index: 1;
+  }
+  .back_top{
+    display: none;
+  }

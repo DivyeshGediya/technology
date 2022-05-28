@@ -1,0 +1,68 @@
+.internet{
+    width: 100%;
+    height: 85vh;
+}
+.internet_web{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+}
+.what_internet{
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5%;
+}
+.what_internet img{
+    border-radius: 20px;
+    box-shadow: 9px 22px 52px -29px black;
+    width: 50%;
+    margin: 1% 0;
+}
+.speedtable{
+    padding: 0 2% ;
+    width: 100%;
+}
+table{
+    margin: 1% 0;
+    width: 100%;
+	border-collapse: collapse;
+	border: 1px solid white;
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),-1px -1px 8px rgba(0, 0, 0, 0);
+}
+.tabletd{
+	transition: all .2s ease-in;
+	cursor: pointer;
+}
+th,
+td{
+	padding: 12px;
+	border-bottom: 1px solid #ddd;
+}
+.tablehead{
+	background-color: #16a085;
+	color: white;
+	transition: all .2s ease-in;
+}
+.tabletd:hover{
+	background-color: #f5f5f5;
+	transform: scale(1.02);
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),-1px -1px 8px rgba(0, 0, 0, 0);
+}
+.tablehead:hover{
+	background-color: #16a085;
+	transform: scale(1.02);
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2),-1px -1px 8px rgba(0, 0, 0, 0);
+}
+@media (max-width: 1024px) {
+    .what_internet{
+        flex-wrap: wrap;
+    }
+    .what_internet img{
+        width: 100%;
+    }
+}
