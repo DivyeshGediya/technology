@@ -1,6 +1,5 @@
 import { Button, TextField } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
-import { TextValidator } from 'react-material-ui-form-validator';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { useNavigate } from 'react-router-dom';
 import { URL } from './URL';
@@ -14,13 +13,12 @@ const Comment = () => {
   });
   const [comments, setComments] = useState<{name:string,commentText:string}[]>([]);
   const getLoginData = () => {
-    fetch(URL+'get_login_data.php')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data[0]) {
-          setState({ ...state, name: data[0].email });
-        }
-      });
+    const value = localStorage.getItem("login_data")
+    if (typeof value === 'string') {
+        const parse = JSON.parse(value) 
+        setState({ ...state, name: parse.email });
+        return;
+    }
   };
   useEffect(() => {
     getLoginData();
@@ -62,7 +60,6 @@ const Comment = () => {
         ref.current.scrollHeight
       );
     }
-    localStorage.setItem('comment', JSON.stringify(comments));
   }, [comments]);
   // const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) =>{
   //   setState({ ...state, commentText: e.target.value})

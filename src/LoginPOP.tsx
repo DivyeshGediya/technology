@@ -11,9 +11,10 @@ import Error from './Error';
 import { Link } from 'react-router-dom';
 import { URL } from './URL';
 type Props = {
-  reload:()=>void;
-}
-const LoginPOP = (props:Props) => {
+  reload: () => void;
+};
+const LoginPOP = (props: Props) => {
+  const [close, setClose] = useState<boolean>(true);
   const [state, setState] = useState({
     data: [],
     logindata: false,
@@ -23,40 +24,26 @@ const LoginPOP = (props:Props) => {
     password: '',
   });
   const getLoginData = () => {
-    fetch(URL+'get_signup_data.php')
+    fetch(URL + 'get_signup_data.php')
       .then((res) => res.json())
       .then((data) => {
         setState({ ...state, data: data });
       });
-    fetch(URL+'get_login_data.php')
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data[0]) {
-          setTimeout(() => {
-            setClose(false);
-          }, 3000);
-        }
-      });
+      const value = localStorage.getItem("login_data")
+      if (typeof value === 'string') {
+          const parse = JSON.parse(value) 
+          return;
+      }
+       setTimeout(() => {
+        setClose(false);
+      }, 3000);
   };
   useEffect(() => {
     getLoginData();
   }, []);
-  const [close, setClose] = useState(true);
   useEffect(() => {}, []);
   const closePOP = () => {
     setClose(true);
-  };
-  const handleSubmitForm = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    let login_data = state.data.filter(
-      (v: { email: string; password: string }) =>
-        v.email === form.email && v.password === form.password
-    );
-    if (!login_data[0]) {
-      e.preventDefault();
-      setState({ ...state, logindata: true });
-    }
   };
   const onChangeValue = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -64,18 +51,19 @@ const LoginPOP = (props:Props) => {
   ) => {
     setForm({ ...form, [text]: e.target.value });
   };
-  const submitData = () => {
-    var formBody = `email=${form.email}&password=${form.password}`;
-    fetch(URL+"login.php", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formBody
-    }).then(() => {
-      closePOP();
-      props.reload();
-    });
+  const submitData = (e: React.FormEvent<Element>) => {
+    let login_data = state.data.filter(
+      (v: { email: string; password: string }) =>
+        v.email === form.email && v.password === form.password
+    );
+    if (!login_data[0]) {
+      e.preventDefault();
+      setState({ ...state, logindata: true });
+      return;
+    }
+    localStorage.setItem('login_data', JSON.stringify(form));
+    closePOP();
+    props.reload();
   };
   return (
     <>
@@ -127,7 +115,7 @@ const LoginPOP = (props:Props) => {
                   variant="contained"
                   color="primary"
                   style={{ margin: '20px 0', width: '100%' }}
-                  onClick={handleSubmitForm}
+                  // onClick={handleSubmitForm}
                 >
                   Sign in
                 </Button>

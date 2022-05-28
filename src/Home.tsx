@@ -17,7 +17,7 @@ const Home = () => {
       {loader ? (
         <>
           <Backtop />
-          <section style={{ width: '100%', height: '100vh' ,background:'black'  }}>
+          <section className='home_cube'>
             <Navbar logo={false} color="white" />
             <video
               className="cube"
