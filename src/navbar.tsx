@@ -18,7 +18,7 @@ const Navbar = (props: NavProps) => {
     email: '',
   });
   const getLoginData = () => {
-    fetch(URL+'/get_login_data.php')
+    fetch(URL+'get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -76,7 +76,7 @@ const Navbar = (props: NavProps) => {
     }, 2000);
   };
   const logOut = ()=>{
-    fetch(URL+"/logout.php").then(() =>getLoginData());
+    fetch(URL+"logout.php").then(() =>getLoginData());
   }
   return (
     <>

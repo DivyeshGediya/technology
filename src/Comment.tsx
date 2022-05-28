@@ -14,7 +14,7 @@ const Comment = () => {
   });
   const [comments, setComments] = useState<{name:string,commentText:string}[]>([]);
   const getLoginData = () => {
-    fetch(URL+'/get_login_data.php')
+    fetch(URL+'get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -28,7 +28,7 @@ const Comment = () => {
   }, []);
 
   const getComment = () =>{
-    fetch(URL+'/get_comment.php')
+    fetch(URL+'get_comment.php')
       .then((res) => res.json())
       .then((data) => {
         if (data[0]) {
@@ -43,7 +43,7 @@ const Comment = () => {
       return;
     }
     let formBody = `name=${state.name}&comment=${state.commentText}`;
-        fetch(URL+'/comment.php', {
+        fetch(URL+'comment.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

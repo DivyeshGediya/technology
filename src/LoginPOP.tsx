@@ -23,12 +23,12 @@ const LoginPOP = (props:Props) => {
     password: '',
   });
   const getLoginData = () => {
-    fetch(URL+'/get_signup_data.php')
+    fetch(URL+'get_signup_data.php')
       .then((res) => res.json())
       .then((data) => {
         setState({ ...state, data: data });
       });
-    fetch(URL+'/get_login_data.php')
+    fetch(URL+'get_login_data.php')
       .then((res) => res.json())
       .then((data) => {
         if (!data[0]) {
@@ -66,7 +66,7 @@ const LoginPOP = (props:Props) => {
   };
   const submitData = () => {
     var formBody = `email=${form.email}&password=${form.password}`;
-    fetch(URL+"/login.php", {
+    fetch(URL+"login.php", {
       method: "POST",
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
