@@ -56,7 +56,7 @@ const Login = () => {
     getLoginData();
   }, [state.in_up]);
   const handleSubmitForm = (e: React.FormEvent<Element>) => {
-    if (state.in_up) {
+   if (state.in_up) {
       let data = state.singup_data.filter(
         (v: { email: string; password: string }) =>
           v.email === form.email && v.password === form.password
@@ -65,14 +65,15 @@ const Login = () => {
         e.preventDefault();
         setState({ ...state, logindata: true });
       } else {
-        let formBody = `email=${form.email}&password=${form.password}`;
-        fetch(signinFormUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: formBody,
-        });
+        localStorage.setItem('login_data',JSON.stringify({email:form.email,password:form.password}));
+        // let formBody = `email=${form.email}&password=${form.password}`;
+        // fetch(signinFormUrl, {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded',
+        //   },
+        //   body: formBody,
+        // });
         navigation('/');
       }
     } else {
@@ -88,6 +89,7 @@ const Login = () => {
           },
           body: formBody,
         });
+        localStorage.setItem('login_data',JSON.stringify({email:form.email,password:form.password}));
         navigation('/');
       }
     }
