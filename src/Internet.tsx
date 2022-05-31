@@ -26,7 +26,7 @@ const Internet = () => {
           <Backtop />
           <Navbar color="white" logo={false} back={'rgba(0,0,0,0.92)'} />
           <div className="internet">
-            <iframe width='420' heigth='315'
+            <iframe
               className="internet_web"
               src="https://www.youtube.com/"
               title="internet"
