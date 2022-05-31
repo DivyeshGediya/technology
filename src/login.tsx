@@ -56,7 +56,7 @@ const Login = () => {
     getLoginData();
   }, [state.in_up]);
   const handleSubmitForm = (e: React.FormEvent<Element>) => {
-    if (state.in_up) {
+   if (state.in_up) {
       let data = state.singup_data.filter(
         (v: { email: string; password: string }) =>
           v.email === form.email && v.password === form.password
