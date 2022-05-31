@@ -28,7 +28,7 @@ const Internet = () => {
           <div className="internet">
             <iframe
               className="internet_web"
-              src="http://internet-map.net/#5-121.22834722756258-47.51044612356302"
+              src="https://github.com/DivyeshGediya/technology/blob/master/src/Internet.tsx"
               title="internet"
             />
           </div>
