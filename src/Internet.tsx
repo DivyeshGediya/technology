@@ -26,7 +26,7 @@ const Internet = () => {
           <Backtop />
           <Navbar color="white" logo={false} back={'rgba(0,0,0,0.92)'} />
           <div className="internet">
-            <embed
+            <iframe
               className="internet_web"
               src="http://internet-map.net/#5-121.22834722756258-47.51044612356302"
               title="internet"
