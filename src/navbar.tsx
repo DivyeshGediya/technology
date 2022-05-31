@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import LoginPOP from './LoginPOP';
 import { URL } from './URL';
+
 interface NavProps {
   color: string;
   logo: boolean;
@@ -98,19 +99,19 @@ const Navbar = (props: NavProps) => {
           {!state.nav && (
             <div
               className="open"
-              style={{ color: props.color, fontSize: '20px', marginTop: '5vh' }}
+              style={{ color: props.color }}
             >
               {state.email && (
                 <Button
                   color="primary"
                   variant="contained"
-                  className="username"
                   onClick={logOut}
+                  sx={{fontSize:'x-small'}}
                 >
                   {state.email && 'Sing Out'}
                 </Button>
               )}
-              <MenuIcon sx={{ fontSize: '45px' }} onClick={open} />
+              <MenuIcon sx={{ fontSize: 'lar' }} onClick={open} />
             </div>
           )}
           <nav className={state.nav}>

@@ -51,7 +51,7 @@
 }
 @media (max-width: 1024px) {
   .cube{
-    transform: scale(2.5);
+    /* transform: scale(2.5); */
   }
   .home_mobile{
     flex-wrap: wrap;

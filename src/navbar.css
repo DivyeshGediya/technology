@@ -13,8 +13,8 @@
 }
 nav{
 	position: relative;
-	width: 100%;
-	left: 100%;
+	width: 0%;
+	right: 0%;
 	height: 10px;
 	background: rgb(255, 255, 255);
 	display: flex;
@@ -25,7 +25,7 @@ nav{
 }
 .nav{
 	transition: 1s;
-	left: 0;
+	width: 100%;
 }
 .fullheight{
 	transition: 1s;
@@ -36,6 +36,8 @@ nav{
 	top: 5%;
 	right: 5%;
 	cursor: pointer;
+	font-size: 20px;
+	margin-top: 5vh;
 }
 .close{
 	position: absolute;
@@ -69,15 +71,16 @@ nav{
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin: 30px;
 	font-size: 70px;
 	color: #fff;
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	z-index: 1;
 	font-family: 'Koulen', cursive;
+	width: 60%;
+	height: 15vh;
 }
+
 @media (max-width: 800px) {
 	.title img{
 		width: 20%;
@@ -85,7 +88,15 @@ nav{
 	.title{
 		font-size: 45px;
 	}
-	.username{
-		display: none;
+}
+@media (max-width: 800px){
+	.title img{
+		width: 10%;
+	}
+	.title{
+		font-size: 25px;
+	}
+	.title strong{
+		font-size: 25px;
 	}
 }

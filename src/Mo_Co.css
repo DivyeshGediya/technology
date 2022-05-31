@@ -38,7 +38,7 @@
     padding: 5%;
 }
 .display_text{
-    font-size: 25px;
+    font-size: large;
     display: flex;
 }
 .display_text ul{
