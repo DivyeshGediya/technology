@@ -13,8 +13,8 @@ import { URL } from './URL';
 // const signupUrl = URL+'get_signup_data.php';
 const Login = () => {
   const navigation = useNavigate();
-  const signinFormUrl = URL+'login.php';
-  const signupFormUrl = URL+'sign_up_data.php';
+  const signinFormUrl = URL + 'login.php';
+  const signupFormUrl = URL + 'sign_up_data.php';
   const [state, setState] = useState<{
     in_up: boolean;
     error: boolean;
@@ -48,7 +48,7 @@ const Login = () => {
     }, 2000);
   }, []);
   const getLoginData = () => {
-    fetch(URL+'get_signup_data.php')
+    fetch(URL + 'get_signup_data.php')
       .then((res) => res.json())
       .then((data) => setState({ ...state, singup_data: data }));
   };
@@ -56,7 +56,7 @@ const Login = () => {
     getLoginData();
   }, [state.in_up]);
   const handleSubmitForm = (e: React.FormEvent<Element>) => {
-   if (state.in_up) {
+    if (state.in_up) {
       let data = state.singup_data.filter(
         (v: { email: string; password: string }) =>
           v.email === form.email && v.password === form.password
@@ -65,7 +65,10 @@ const Login = () => {
         e.preventDefault();
         setState({ ...state, logindata: true });
       } else {
-        localStorage.setItem('login_data',JSON.stringify({email:form.email,password:form.password}));
+        localStorage.setItem(
+          'login_data',
+          JSON.stringify({ email: form.email, password: form.password })
+        );
         // let formBody = `email=${form.email}&password=${form.password}`;
         // fetch(signinFormUrl, {
         //   method: 'POST',
@@ -89,7 +92,10 @@ const Login = () => {
           },
           body: formBody,
         });
-        localStorage.setItem('login_data',JSON.stringify({email:form.email,password:form.password}));
+        localStorage.setItem(
+          'login_data',
+          JSON.stringify({ email: form.email, password: form.password })
+        );
         navigation('/');
       }
     }
@@ -124,6 +130,12 @@ const Login = () => {
           <div className="login"></div>
           <div className="login-page">
             <div className="w-100">
+              <Link to="/" className="logo">
+                <h1>
+                  <img src="gallery/logo.png" alt="" />
+                  Technology
+                </h1>
+              </Link>
               <ValidatorForm
                 className="form"
                 onSubmit={(e) => handleSubmitForm(e)}
@@ -281,12 +293,6 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Link to="/" className="logo">
-            <h1>
-              <img src="gallery/logo.png" alt="" />
-              Technology
-            </h1>
-          </Link>
         </>
       ) : (
         <Loading />

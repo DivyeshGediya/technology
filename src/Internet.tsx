@@ -26,14 +26,18 @@ const Internet = () => {
           <Backtop />
           <Navbar color="white" logo={false} back={'rgba(0,0,0,0.92)'} />
           <div className="internet">
-            <embed
-              className="internet_web"
-              src="http://internet-map.net/#5-121.22834722756258-47.51044612356302"
-              title="internet"
-            />
+            <img className="internet_web" src="gallery/internet.jpg" alt="" />
+            <div>
+              <h1>View the most up website in this link</h1>
+              <a href="http://internet-map.net/" target='_blank'>
+              <Button variant="contained" color="primary">
+                View
+              </Button>
+              </a>
+            </div>
           </div>
           <div className="what_internet">
-            <div data-aos="zoom-in">
+            <div className='order-2 order-lg-1' data-aos="zoom-in">
               <h1>What is Internet</h1>
               <p className="lead">
                 Internet, a system architecture that has revolutionized
@@ -57,13 +61,13 @@ const Internet = () => {
                 subsidiaries of traditional “brick-and-mortar” companies) that
                 carry out most of their sales and services over the Internet.
               </p>
-              <a href="https://www.submarinecablemap.com/" target='_blank'>
+              <a href="https://www.submarinecablemap.com/" target="_blank">
                 <Button variant="contained" color="primary">
                   see internet map
                 </Button>
               </a>
             </div>
-            <img data-aos="zoom-in" src="gallery/internet1.jpg" alt="" />
+            <img className='order-1 order-lg-2' data-aos="zoom-in" src="gallery/internet1.jpg" alt="" />
           </div>
           <div className="what_internet">
             <img data-aos="zoom-in" src="gallery/internet_cable.jpg" alt="" />
@@ -87,7 +91,7 @@ const Internet = () => {
                   </tbody>
                 </table>
               </div>
-              <a href="https://fast.com/" target='_blank'>
+              <a href="https://fast.com/" target="_blank">
                 <Button variant="contained" color="primary">
                   Check Your Speed
                 </Button>

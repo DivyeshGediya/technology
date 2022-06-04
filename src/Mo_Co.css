@@ -79,7 +79,7 @@
     width: 30%;
 }
 .vr_text h1{
-    font-size: 60px;
+    font-size: 5rem;
 }
 .vr_text p{
     margin-top: 5%;
@@ -108,5 +108,8 @@
     }
     .vr_text p{
         display: none;
+    }
+    .vr_text h1{
+        font-size: 2rem;
     }
 }

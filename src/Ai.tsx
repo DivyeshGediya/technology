@@ -62,16 +62,16 @@ const Ai = () => {
               />
             </div>
           </section>
-          <section className="section">
+          <section className="type_section">
             <h1 data-aos="zoom-in" className="mt-5 display-1">
               Two Types of Artificial intelligence
             </h1>
             <div className="two_type">
-              <div data-aos="zoom-in" style={{ width: '45%' }}>
+              <div data-aos="zoom-in">
                 <h2>Weak Ai</h2>
                 <img src="gallery/weak_ai.jpg" alt="" width="100%" />
               </div>
-              <div data-aos="zoom-in" style={{ width: '45%' }}>
+              <div data-aos="zoom-in">
                 <h2>Srong Ai</h2>
                 <img src="gallery/strong_ai.jpg" alt="" width="100%" />
               </div>
@@ -82,7 +82,6 @@ const Ai = () => {
             <div style={{ position: 'absolute', top: '0', width: '100%' }}>
               <img
                 data-aos="zoom-in"
-                data-aos-offset="600"
                 style={{ margin: '3%' }}
                 src="gallery/ai_svg1.png"
                 alt=""
@@ -90,7 +89,6 @@ const Ai = () => {
               />
               <img
                 data-aos="zoom-in"
-                data-aos-offset="600"
                 style={{ margin: '3%', position: 'absolute', right: '0' }}
                 src="gallery/ai_svg2.png"
                 alt=""
@@ -98,7 +96,6 @@ const Ai = () => {
               />
               <img
                 data-aos="zoom-in"
-                data-aos-offset="600"
                 style={{
                   margin: '5%',
                   position: 'absolute',
@@ -111,7 +108,6 @@ const Ai = () => {
               />
               <img
                 data-aos="zoom-in"
-                data-aos-offset="600"
                 style={{ position: 'absolute', right: '0', top: '150%' }}
                 src="gallery/ai_svg3.png"
                 alt=""
@@ -120,7 +116,7 @@ const Ai = () => {
             </div>
           </section>
           <section className="sophia_section">
-            <div data-aos="zoom-in">
+            <div className='order-2 order-lg-1' data-aos="zoom-in">
               <h1>Sophia Saudi Arabia</h1>
               <p className="lead">
                 In 2017, social robot Sophia was given citizenship of Saudi
@@ -143,7 +139,7 @@ const Ai = () => {
                 smartphone, a Channel 4 show, and a credit card.
               </p>
             </div>
-            <video width="50%" controls autoPlay loop muted data-aos="zoom-in">
+            <video className='order-1 order-lg-2' width="50%" controls autoPlay loop muted data-aos="zoom-in">
               <source src="gallery/Sophia video.mp4" type="video/mp4" />
             </video>
           </section>

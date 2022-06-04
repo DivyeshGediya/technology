@@ -1,12 +1,24 @@
 .internet{
     width: 100%;
     height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.internet div{
+    text-align: center;
+    padding: 5%;
+}
+.internet div h1{
+    font-size: 8rem;
+    color: white;
 }
 .internet_web{
     position: absolute;
     top: 0;
     height: 100vh;
     width: 100%;
+    z-index: -1;
 }
 .what_internet{
     width: 100%;
@@ -61,6 +73,9 @@ td{
 @media (max-width: 1024px) {
     .what_internet{
         flex-wrap: wrap;
+    }
+    .internet div h1{
+        font-size: 4rem;
     }
     .what_internet img{
         width: 100%;
