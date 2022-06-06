@@ -91,7 +91,8 @@ const LoginPOP = (props: Props) => {
                   variant="standard"
                   label="Enter email"
                   placeholder="abc@gmail.com"
-                  required
+                  validators={['required']}
+                  errorMessages={['Enter Email']}
                   fullWidth
                   style={{ margin: '20px 0' }}
                   name="email"
@@ -105,7 +106,8 @@ const LoginPOP = (props: Props) => {
                   variant="standard"
                   label="Enter Password Name"
                   placeholder="abc@123"
-                  required
+                  validators={['required']}
+                  errorMessages={['Enter Password']}
                   fullWidth
                   style={{ margin: '20px 0' }}
                   name="password"

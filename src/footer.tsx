@@ -1,39 +1,48 @@
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { TextValidator } from 'react-material-ui-form-validator';
 import { ValidatorForm } from 'react-material-ui-form-validator';
+import { URL } from './URL';
 
 const Footer = () => {
   const [state, setState] = useState<{email:string}>({
     email: '',
   });
+  const handleSubmit = () =>{
+    fetch( URL + 'detailsReq.php' , {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `email=${state.email}`,
+    }).then(()=>setState({...state,email:''}));
+    
+  }
   return (
     <footer data-aos="fade-up" className="footer">
       <img src="gallery/footer_robot.png" alt="" />
       <div className="subscribe">
-        <h1>Join to Technology</h1>
+        <h1>Send your email to Technology</h1>
         <p>
-          Enter your email address to register to our newsletter joined
-          form delivered on regular basis!
+          for get more details
         </p>
-        <ValidatorForm className="subscribe_form" onSubmit={() => ''}>
-          <TextField
+        <ValidatorForm className="subscribe_form" onSubmit={handleSubmit}>
+          <TextValidator
             value={state.email}
             type="email"
             InputLabelProps={{ className: 'color' }}
             InputProps={{ className: 'color' }}
-            onChange={(e) => setState({ email: e.target.value })}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setState({ email: e.target.value })}
             variant="standard"
             label="Enter Email Address"
             placeholder="abc12@gmail.com"
-            // validators={['required']}
-            // errorMessages={['enter email address']}
-
-            required
+            validators={['required']}
+            errorMessages={['enter email address']}
             style={{ margin: '20px', width: '300px' }}
+            name="email"
           />
           <Button
             type="submit"

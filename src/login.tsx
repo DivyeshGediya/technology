@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ValidatorForm } from 'react-material-ui-form-validator';
-import { Button, TextField } from '@mui/material';
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
+import { Button } from '@mui/material';
 import Loading from './Loading';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -18,11 +18,13 @@ const Login = () => {
   const [state, setState] = useState<{
     in_up: boolean;
     error: boolean;
+    alreadyLogin: boolean;
     logindata: boolean;
     singup_data: { email: string; password: string }[];
   }>({
     in_up: false,
     error: false,
+    alreadyLogin:false,
     logindata: false,
     singup_data: [],
   });
@@ -69,17 +71,17 @@ const Login = () => {
           'login_data',
           JSON.stringify({ email: form.email, password: form.password })
         );
-        // let formBody = `email=${form.email}&password=${form.password}`;
-        // fetch(signinFormUrl, {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded',
-        //   },
-        //   body: formBody,
-        // });
         navigation('/');
       }
     } else {
+      let email = state.singup_data.filter(
+        (v: { email: string; password: string }) =>
+          v.email === form.email 
+      );
+      if(email[0]){
+        setState({ ...state, alreadyLogin: true });
+        return;
+      }
       if (form.password !== form.confirm && !state.in_up) {
         e.preventDefault();
         setState({ ...state, error: true });
@@ -118,6 +120,14 @@ const Login = () => {
               }}
             />
           )}
+          {state.alreadyLogin && (
+            <Error
+              error="Email is already exit"
+              false={() => {
+                setState({ ...state, alreadyLogin: false });
+              }}
+            />
+          )}
           {state.logindata && (
             <Error
               error="Data Not Found"
@@ -143,7 +153,7 @@ const Login = () => {
                 <h1>SIGN {state.in_up ? 'IN' : 'UP'}</h1>
                 {state.in_up ? (
                   <>
-                    <TextField
+                    <TextValidator
                       value={form.email}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color', type: 'email' }}
@@ -153,12 +163,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter email"
                       placeholder="abc@gmail.com"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter Email']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="email"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.password}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color', type: 'password' }}
@@ -168,7 +179,8 @@ const Login = () => {
                       variant="standard"
                       label="Enter Password Name"
                       placeholder="abc@123"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter Password']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="password"
@@ -176,7 +188,7 @@ const Login = () => {
                   </>
                 ) : (
                   <>
-                    <TextField
+                    <TextValidator
                       value={form.fname}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color' }}
@@ -186,12 +198,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter Frist Name"
                       placeholder="username"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter First Name']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="f_name"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.lname}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color' }}
@@ -201,12 +214,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter Last Name"
                       placeholder="username"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter Last Name']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="l_name"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.userName}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color' }}
@@ -216,12 +230,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter User Name"
                       placeholder="username"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter User Name']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="user_name"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.email}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color', type: 'email' }}
@@ -231,12 +246,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter email"
                       placeholder="abc@gmail.com"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter Email']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="email"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.password}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color', type: 'password' }}
@@ -246,12 +262,13 @@ const Login = () => {
                       variant="standard"
                       label="Enter Password Name"
                       placeholder="abc@123"
-                      required
+                      validators={['required']}
+                      errorMessages={['Enter Password']}
                       fullWidth
                       style={{ margin: '20px' }}
                       name="password"
                     />
-                    <TextField
+                    <TextValidator
                       value={form.confirm}
                       InputLabelProps={{ className: 'color' }}
                       InputProps={{ className: 'color', type: 'password' }}
@@ -259,11 +276,13 @@ const Login = () => {
                         onChangeValue(e, 'confirm')
                       }
                       variant="standard"
-                      label="Re-Enter Password Name"
+                      label="Re-Enter Confirm Name"
                       placeholder="abc@123"
+                      validators={['required']}
+                      errorMessages={['Enter Confirm Password']}
                       fullWidth
-                      required
                       style={{ margin: '20px' }}
+                      name="c_password"
                     />
                   </>
                 )}
