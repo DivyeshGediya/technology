@@ -50,13 +50,13 @@ const Footer = () => {
             color="primary"
             style={{ margin: '20px' }}
           >
-            Join Our Team
+            Send
           </Button>
         </ValidatorForm>
         <div>
-          <InstagramIcon sx={{fontSize:'40px',margin:'1%'}} />
-          <FacebookIcon sx={{fontSize:'40px',margin:'1%'}} />
-          <GoogleIcon sx={{fontSize:'40px',margin:'1%'}} />
+          <a href="https://www.instagram.com/" target="_blank"><InstagramIcon sx={{fontSize:'40px',margin:'1%'}} /></a>
+          <a href="https://www.facebook.com/" target="_blank"><FacebookIcon sx={{fontSize:'40px',margin:'1%'}} /></a>
+          <a href="https://myaccount.google.com/" target="_blank"><GoogleIcon sx={{fontSize:'40px',margin:'1%'}} /></a>
         </div>
       </div>
     </footer>
